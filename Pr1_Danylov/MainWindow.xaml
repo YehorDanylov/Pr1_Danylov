@@ -1,0 +1,52 @@
+﻿<Window x:Class="Pr1_Danylov.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pr1_Danylov"
+        mc:Ignorable="d"
+        Title="Birthday Calculator" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DatePicker Grid.Row="0" SelectedDate="{Binding BirthDate}" Margin="205,10"/>
+        <Button Grid.Row="1" Content="Calculate Age" Command="{Binding CalculateAgeCommand}" Margin="205,10,205,16" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.299"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="205,28,205,8" Grid.RowSpan="3">
+            <TextBlock Text="{Binding AgeResult}"/>
+        </StackPanel>
+
+
+        <!-- StackPanel for Zodiac Signs -->
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="205,16,205,-16">
+            <TextBlock Text="{Binding ZodiacSignWestern}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="205,37,205,-37">
+            <TextBlock Text="{Binding ZodiacSignChinese}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="205,58,205,-62">
+            <TextBlock Text="{Binding BirthdayMessage}"/>
+        </StackPanel>
+    </Grid>
+</Window>
